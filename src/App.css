@@ -1,38 +1,253 @@
-.App {
+/* Geral */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Container principal */
+.app-container {
+  width: 800px;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Título */
+h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Formulário */
+form {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Estilo para todos os botões */
+button {
+  background-color: #4CAF50;
   color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  min-width: 100px;
+  text-align: center;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  button:hover {
+    opacity: 0.9;
   }
-  to {
-    transform: rotate(360deg);
+
+  /* Botão de adicionar nota */
+  button[type="submit"] {
+    background-color: #4CAF50;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+
+  /* Botão de salvar específico */
+  button.save {
+    background-color: #007bff; /* Cor azul para o botão de salvar */
+  }
+
+  button.save:hover {
+    background-color: #0056b3; /* Cor de hover azul para o botão de salvar */
+  }
+
+/* Botões específicos */
+button.remove {
+  background-color: #ff4c4c; /* Botão de remover fica vermelho */
+}
+
+button.remove:hover {
+  background-color: #e53e3e; /* Cor de hover para o botão de remover */
+}
+
+button.edit {
+  background-color: #ffbb33; /* Botão de editar fica amarelo */
+  margin-right: 2rem; 
+}
+
+button.edit:hover {
+  background-color: #e5a700; /* Cor de hover para o botão de editar */
+}
+
+button.view {
+  background-color: #007bff; /* Botão de ver nota fica azul */
+  margin-right: 2rem; 
+}
+
+button.view:hover {
+  background-color: #0056b3; /* Cor de hover para o botão de ver nota */
+}
+
+  /* Estilo para a visualização do conteúdo da nota */
+  li div > p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+    word-wrap: break-word; /* Quebrar palavras longas */
+  }
+
+  /* Estilo para o formulário de edição de título */
+  .title-editor {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaçamento entre o input e os botões */
+  }
+
+  /* Garantir que o input e o botão tenham a mesma altura e alinhamento */
+  .title-editor input {
+    height: 40px; /* Definir a mesma altura para o input */
+    flex: 1; /* Ocupa o máximo de espaço disponível */
+  }
+
+  /* Botões para salvar e cancelar edição do título */
+  .title-editor button {
+    height: 40px; /* Garantir que o botão tenha a mesma altura */
+    background-color: #ffbb33; /* Cor do botão salvar */
+    margin-left: 10px;
+  }
+
+  .title-editor button.cancel {
+    background-color: #ff4c4c; /* Cor do botão cancelar */
+  }
+
+  .title-editor button.cancel:hover {
+    background-color: #e53e3e; /* Cor de hover para cancelar */
+  }
+
+  .title-editor input:focus, .note-editor textarea:focus {
+    border-color: #007bff;
+    background-color: #f0f8ff;
+  }
+
+/* Estilo para os itens da nota */
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+/* Container para os botões dentro do item de nota */
+li > div {
+  display: flex;
+  gap: 10px; /* Adiciona o espaçamento entre os botões */
+  align-items: center; /* Alinha os botões verticalmente */
+}
+
+/* Título da nota à esquerda */
+li .note-title {
+  text-align: left;
+  flex-grow: 1; /* O título ocupa o espaço restante */
+  padding-right: 10px; /* Espaço entre o título e os botões */
+}
+
+/* Botões à direita */
+li .note-buttons {
+  display: flex;
+  gap: 10px; /* Espaçamento entre os botões */
+}
+
+  /* Área de edição da nota */
+  .note-editor {
+    margin-top: 20px;
+  }
+
+  .note-editor textarea {
+    width: 98%;
+    height: 200px;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    resize: vertical;
+  }
+
+  /* NoteItem.css */
+.title-editor input {
+  margin-right: 10px;
+}
+
+.title-editor .save,
+.title-editor .cancel {
+  background-color: green; /* Exemplo de cor para os botões de salvar e cancelar */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.note-buttons button {
+  background-color: blue; /* Exemplo de cor para os botões */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.note-buttons .edit {
+  background-color: orange;
+}
+
+.note-buttons .view {
+  background-color: yellow;
+}
+
+.note-buttons .remove {
+  background-color: red;
+}
+
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .app-container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  form {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  button {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .title-editor input {
+    width: 100%;
   }
 }
