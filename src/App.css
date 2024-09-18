@@ -198,7 +198,15 @@ li .note-buttons {
   margin-right: 10px;
 }
 
-.title-editor .save,
+/* Estilo para o botão de salvar específico */
+.title-editor .save {
+  background-color: #28a745; /* Cor verde para o botão de salvar */
+}
+
+.title-editor .save:hover {
+  background-color: #218838; /* Cor de hover verde escuro para o botão de salvar */
+}
+
 .title-editor .cancel {
   background-color: green; /* Exemplo de cor para os botões de salvar e cancelar */
   color: white;

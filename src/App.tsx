@@ -13,6 +13,7 @@ const App: React.FC = () => {
   const [notes, setNotes] = useState<Note[]>([]);
   const [editingNoteId, setEditingNoteId] = useState<number | null>(null);
   const [editingTitleId, setEditingTitleId] = useState<number | null>(null);
+  const [newTitle, setNewTitle] = useState<string>(''); // Novo estado para o título editado
 
   // Função para adicionar uma nova nota
   const addNote = (title: string) => {
@@ -30,6 +31,7 @@ const App: React.FC = () => {
   const updateNoteTitle = (id: number, newTitle: string) => {
     setNotes(notes.map(note => note.id === id ? { ...note, title: newTitle } : note));
     setEditingTitleId(null); // Fecha o modo de edição de título
+    setNewTitle(''); // Limpa o título editado
   };
 
   // Função para remover uma nota
@@ -51,11 +53,19 @@ const App: React.FC = () => {
   // Função para iniciar a edição do título
   const startEditingTitle = (id: number) => {
     setEditingTitleId(id); // Inicia a edição do título
+    setNewTitle(notes.find(note => note.id === id)?.title || ''); // Define o título atual no estado de edição
   };
 
   // Função para salvar o conteúdo da nota e fechar o modo de edição
   const saveNoteContent = () => {
     setEditingNoteId(null); // Fecha o editor de nota (textarea) após salvar
+  };
+
+  // Função para salvar o novo título e sair do modo de edição
+  const saveTitle = () => {
+    if (newTitle.trim()) { // Verifica se o título não está vazio
+      updateNoteTitle(editingTitleId!, newTitle); // Atualiza o título da nota
+    }
   };
 
   const currentEditingNote = notes.find(note => note.id === editingNoteId);
@@ -80,10 +90,11 @@ const App: React.FC = () => {
         <div className="title-editor">
           <input
             type="text"
-            value={currentEditingTitleNote.title}
-            onChange={(e) => updateNoteTitle(currentEditingTitleNote.id, e.target.value)}
+            value={newTitle}
+            onChange={(e) => setNewTitle(e.target.value)}
             autoFocus
           />
+          <button className='save' onClick={saveTitle}>Salvar</button> {/* Adicionando o botão de Salvar */}
           <button onClick={() => setEditingTitleId(null)}>Cancelar</button>
         </div>
       )}
