@@ -15,12 +15,18 @@ const App: React.FC = () => {
   const [editingTitleId, setEditingTitleId] = useState<number | null>(null);
   const [newTitle, setNewTitle] = useState<string>(''); // Novo estado para o título editado
 
-  // Função para adicionar uma nova nota
-  const addNote = (title: string) => {
-    const newNote: Note = { id: Date.now(), title };
-    setNotes([...notes, newNote]);
-    setEditingNoteId(newNote.id); // Inicia a edição da nova nota
-  };
+// Função para adicionar uma nova nota
+const addNote = (title: string) => {
+  if (title.length > 30) {
+    alert("O título da nota deve ter no máximo 30 caracteres.");
+    return;
+  }
+
+  const newNote: Note = { id: Date.now(), title };
+  setNotes([...notes, newNote]);
+  setEditingNoteId(newNote.id); // Inicia a edição da nova nota
+};
+
 
   // Função para atualizar o conteúdo da nota
   const updateNoteContent = (id: number, content: string) => {
