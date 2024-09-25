@@ -12,12 +12,12 @@ body {
 
 /* Container principal */
 .app-container {
-  width: 800px;
+  width: 1200px;
   padding: 20px;
   background-color: #ffffff;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  text-align: center;
+  height: 100%;
 }
 
 /* Título */
@@ -25,6 +25,8 @@ h1 {
   font-size: 24px;
   color: #333;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 /* Formulário */
@@ -146,6 +148,14 @@ button.view:hover {
     background-color: #f0f8ff;
   }
 
+  .note-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    max-height: 40vh;
+  }
+
 /* Estilo para os itens da nota */
 li {
   display: flex;
@@ -238,7 +248,48 @@ li .note-buttons {
 }
 
 
-/* Responsividade */
+/* Responsividade para tablets (600px a 1024px) */
+@media (max-width: 1024px) and (min-width: 600px) {
+  .app-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  form {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  input[type="text"] {
+    width: 100%;
+  }
+
+  .title-editor input {
+    width: 100%;
+  }
+
+  button {
+    width: auto;
+    padding: 8px 15px;
+  }
+
+  .note-list {
+    max-height: 60vh;
+  }
+
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  li .note-buttons {
+    margin-top: 10px;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* Responsividade para celulares (até 600px) */
 @media (max-width: 600px) {
   .app-container {
     width: 100%;
@@ -250,12 +301,37 @@ li .note-buttons {
     gap: 10px;
   }
 
-  button {
-    min-width: unset;
+  input[type="text"] {
     width: 100%;
   }
 
-  .title-editor input {
+  button {
     width: 100%;
+    padding: 12px 0;
+  }
+
+  .note-list {
+    max-height: 50vh;
+  }
+
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  li .note-buttons {
+    width: 100%;
+    justify-content: space-between;
+    gap: 5px;
+  }
+
+  .note-buttons button {
+    flex: 1;
+  }
+
+  .note-editor textarea {
+    width: 100%;
+    height: 150px;
   }
 }

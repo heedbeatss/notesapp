@@ -30,6 +30,8 @@ const NoteItem: React.FC<NoteItemProps> = ({ note, onUpdateTitle, onRemove }) =>
     setNewTitle(note.title);
   };
 
+  
+
   return (
     <div className="note-item">
       {isEditing ? (
